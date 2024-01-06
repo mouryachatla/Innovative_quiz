@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html >
+<head>
+<title>Interactive Quiz</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+color:"green";
+    }
+    .quiz-container {
+        background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3BKRLjeb8wFRJLvuilIng_h8PezKfwG53AQ&usqp=CAU");
+background-size: 800px,100px;
+
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+    .question {
+        font-weight: bold;
+    }
+    .options label {
+        display: block;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="quiz-container">
+    <h1>Interactive Quiz</h1><hz>
+    <form id="quiz-form">
+        <div class="question">1:What do you learn by HTML ?</div>
+        <div class="options">
+            <label><input type="radio" name="q1" value="a">a) Hyper Text Markup Language</label>
+            <label><input type="radio" name="q1" value="b">b) Hyper Tested Markup Language</label>
+            <label><input type="radio" name="q1" value="c">c) High Text Markup Language</label>
+        </div>
+
+        <div class="question">2: Who if the foundre of html?</div>
+        <div class="options">
+            <label><input type="radio" name="q2" value="a">a) Rossum</label>
+            <label><input type="radio" name="q2" value="b">b)Tim Berners-Lee </label>
+            <label><input type="radio" name="q2" value="c">c) England hall</label>
+        </div>
+
+        <div class="question">3:Which is used to read an HTML page and render it? ?</div>
+        <div class="options">
+            <label><input type="radio" name="q3" value="a">a) web browser</label>
+            <label><input type="radio" name="q3" value="b">b) applications</label>
+            <label><input type="radio" name="q3" value="c">c) sever</label>
+        </div>
+
+        <button type="button" id="submit-button">Submit </button>
+    </form>
+    <div id="result"></div>
+</div>
+
+<script>
+    document.getElementById('submit-button').addEventListener('click', function() {
+        const form = document.getElementById('quiz-form');
+        const answers = {
+            q1: form.q1.value,
+            q2: form.q2.value,
+            q3: form.q3.value
+        };
+
+        const correctAnswers = {
+            q1: 'a',
+            q2: 'b',
+            q3: 'a'
+        };
+
+        let score = 0;
+        for (const question in answers) {
+            if (answers[question] === correctAnswers[question]) {
+                score++;
+            }
+        }
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `You scored ${score} out of ${Object.keys(correctAnswers).length} correct.`;
+    });
+</script>
+</body>
+</html>
